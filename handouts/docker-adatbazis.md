@@ -6,7 +6,7 @@
 docker run --name [nev] -p 3306:3306 -e MYSQL_ROOT_PASSWORD=[jelszo] -d mysql:9
 ```
 
-### Volume felcsatolásával:
+Volume felcsatolásával:
 
 ```bash
 docker run --name [nev] -p 3306:3306 -e MYSQL_ROOT_PASSWORD=[jelszo] -v "$(pwd)/sql:/sql:ro" -d mysql:9
@@ -30,7 +30,7 @@ docker stop [nev]
 docker rm -f [nev]
 ```
 
-## Adatbázis elérése a terminalból:
+## Adatbázis elérése terminálból:
 
 ```bash
 docker exec -it [nev] mysql -p
