@@ -1,5 +1,5 @@
 CREATE TABLE `jegyek` (
-	`id` int NOT NULL,
+	`id` int NOT NULL AUTO_INCREMENT,
 	`tantargy_id` int NOT NULL,
 	`jegy` int NOT NULL,
 	`diak` varchar(20) NOT NULL,
