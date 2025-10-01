@@ -32,7 +32,7 @@ docker exec -it berles mysql -uelemzo -p
 
 ```sql
 USE `autoberlesek`;
-SHOW tables;
+SHOW TABLES;
 ```
 
 ### 20. feladat
