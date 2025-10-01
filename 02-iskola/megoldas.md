@@ -5,7 +5,7 @@
 ### 2. feladat
 
 ```bash
-docker run --name db -p 3306:3306 -e MYSQL_ROOT_PASSWORD=pass -v "$(pwd)/sql:/sql:ro" -d mysql:9
+docker run --name db -p 3306:3306 -e MYSQL_ROOT_PASSWORD=pass -v "$(pwd)/sql:/sql:ro" -d mysql:9.3
 
 docker exec -it db mysql -p
 ```
