@@ -12,7 +12,7 @@ DROP TABLE IF EXISTS `concession_stand`;
 CREATE TABLE `concession_stand` (
   `id` bigint UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(48) NOT NULL,
-  `cash_registers` int NOT NULL,
+  `cash_registers` int UNSIGNED NOT NULL,
   `preorder` boolean NOT NULL DEFAULT FALSE,
   `pizza` boolean NOT NULL DEFAULT FALSE,
   `nuggets` boolean NOT NULL DEFAULT FALSE
@@ -51,7 +51,7 @@ CREATE TABLE `product` (
   `id` bigint UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   `manufacturer_id` bigint UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
-  `items_per_pack` int NULL,
+  `items_per_pack` int UNSIGNED NULL,
   `type` varchar(100) NOT NULL,
   FOREIGN KEY (`manufacturer_id`) REFERENCES `manufacturer`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 );
@@ -61,7 +61,7 @@ DROP TABLE IF EXISTS `stock`;
 CREATE TABLE `stock` (
   `concession_stand_id` bigint UNSIGNED NOT NULL,
   `product_id` bigint UNSIGNED NOT NULL,
-  `amount` int NOT NULL DEFAULT 0,
+  `amount` int UNSIGNED NOT NULL DEFAULT 0,
   PRIMARY KEY (`concession_stand_id`, `product_id`),
   FOREIGN KEY (`concession_stand_id`) REFERENCES `concession_stand`(`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (`product_id`) REFERENCES `product`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
