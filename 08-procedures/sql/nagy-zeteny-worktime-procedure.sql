@@ -2,6 +2,7 @@ USE `worktime`;
 
 -- 3. feladat:
 DELIMITER //
+
 CREATE PROCEDURE IF NOT EXISTS `sp_register_work_time`(
     IN _employee_id INT,
     IN _start_time TIME,
@@ -19,10 +20,12 @@ BEGIN
     VALUES
       (_employee_id, CURDATE(), _start_time, _end_time, _break_minutes, 0);
 END//
+
 DELIMITER ;
 
 -- 4. feladat:
 DELIMITER //
+
 CREATE PROCEDURE IF NOT EXISTS `sp_workhours`(
     IN _employee_id INT,
     IN _year INT,
@@ -42,10 +45,12 @@ BEGIN
     
     SET _total_hours = IFNULL(_total_hours, 0);
 END//
+
 DELIMITER ;
 
 -- 5. feladat:
 CALL `sp_workhours`(1, 2024, @total_hours);
+
 SELECT
 	@total_hours AS '1-es dolgozó teljes munkaideje 2024-ben'
 FROM
@@ -53,6 +58,7 @@ FROM
 
 -- 6. feladat:
 DELIMITER //
+
 CREATE PROCEDURE IF NOT EXISTS `sp_approve`(
     IN _timesheet_id INT,
     IN _approver_id INT
@@ -121,6 +127,7 @@ BEGIN
     WHERE
       `id` = _timesheet_id;
 END//
+
 DELIMITER ;
 
 -- 7. feladat:
@@ -140,6 +147,7 @@ GRANT EXECUTE ON PROCEDURE `worktime`.`sp_approve` TO 'worker'@'%';
 
 -- 10. feladat:
 DELIMITER //
+
 CREATE PROCEDURE IF NOT EXISTS `sp_create_user`(
     IN _username VARCHAR(50),
     IN _password VARCHAR(255),
@@ -180,4 +188,5 @@ BEGIN
     
     FLUSH PRIVILEGES;
 END//
+
 DELIMITER ;
